@@ -13,6 +13,7 @@ namespace BLL.Interfaces
         public User GetUserById(int id);
         public void Create(User user);
         public User CheckExistingUser(string email);
+        public User Signin(User user);
 
         //public void UpdateUser(int id, User user);
         //public void DeleteUser(int id);
