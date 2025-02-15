@@ -13,6 +13,8 @@ namespace fireguard.Controllers
         {
             _userService = userService;
         }
+
+
         // GET: api/<UserController>
         [HttpGet]
         public IActionResult Get()
@@ -102,6 +104,27 @@ namespace fireguard.Controllers
                 // Return the user details
                 return Ok(user); // 200 OK with the user details
              }
+            catch (Exception ex)
+            {
+                // Handle any exceptions that occur during the retrieval
+                return StatusCode(500, "Internal server error: " + ex.Message); // 500 Internal Server Error
+            }
+        }
+
+        /// <summary>
+        /// Signin user
+        /// </summary>
+        /// <param name="email">User email</param>
+        /// <returns>user if the user exists.</returns>
+        [HttpGet("signin")]
+        public IActionResult UserSignIn([FromBody] User user)
+        {
+            try
+            {
+
+                // Return the user details
+                return Ok(_userService.Signin(user)); // 200 OK with the user details
+            }
             catch (Exception ex)
             {
                 // Handle any exceptions that occur during the retrieval

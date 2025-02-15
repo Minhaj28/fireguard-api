@@ -38,6 +38,26 @@ namespace BLL.Services
            return _userRepository.GetByEmail(email);
         }
 
+        public User Signin(User user) 
+        {
+            User user1 = _userRepository.GetByEmail(user.Email);
+            try
+            {
+                if(user.Email == user1.Email && user.PasswordHash == user1.PasswordHash)
+                {
+                    return user;
+                }
+                else
+                {
+                    throw new Exception($"User not found.");
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         //public void UpdateUser(int id, User user)
         //{
         //    _userAction.UpdateUser(id, user);
