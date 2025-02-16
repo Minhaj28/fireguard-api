@@ -20,6 +20,7 @@ namespace BLL.Services
         }
         public List<User> GetAllUsers()
         {
+
             return _userRepository.GetAllUsers();
         }
 
@@ -69,4 +70,95 @@ namespace BLL.Services
         //}
 
     }
+
+    public class BuildingService : IBuildingService
+    {
+        private readonly IBuildingRepository _buildingRepository;
+
+        public BuildingService(IBuildingRepository buildingRepository)
+        {
+            _buildingRepository = buildingRepository;
+        }
+
+        public List<Building> GetAllBuildings()
+        {
+            return _buildingRepository.GetAll();
+        }
+    }
+
+    public class FloorService : IFloorService
+    {
+        private readonly IFloorRepository _floorRepository;
+
+        public FloorService(IFloorRepository floorRepository)
+        {
+            _floorRepository = floorRepository;
+        }
+
+        public List<Floor> GetAllFloors()
+        {
+            return _floorRepository.GetAll();
+        }
+    }
+
+    public class CameraService : ICameraService
+    {
+        private readonly ICameraRepository _cameraRepository;
+
+        public CameraService(ICameraRepository cameraRepository)
+        {
+            _cameraRepository = cameraRepository;
+        }
+
+        public List<Camera> GetAllCameras()
+        {
+            return _cameraRepository.GetAll();
+        }
+    }
+
+    public class SensorService : ISensorService
+    {
+        private readonly ISensorRepository _sensorRepository;
+
+        public SensorService(ISensorRepository sensorRepository)
+        {
+            _sensorRepository = sensorRepository;
+        }
+
+        public List<Sensor> GetAllSensors()
+        {
+            return _sensorRepository.GetAll();
+        }
+    }
+
+    public class IncidentService : IIncidentService
+    {
+        private readonly IIncidentRepository _incidentRepository;
+
+        public IncidentService(IIncidentRepository incidentRepository)
+        {
+            _incidentRepository = incidentRepository;
+        }
+
+        public List<Incident> GetAllIncidents()
+        {
+            return _incidentRepository.GetAll();
+        }
+    }
+
+    public class EmergencyActionService : IEmergencyActionService
+    {
+        private readonly IEmergencyActionRepository _emergencyActionRepository;
+
+        public EmergencyActionService(IEmergencyActionRepository emergencyActionRepository)
+        {
+            _emergencyActionRepository = emergencyActionRepository;
+        }
+
+        public List<EmergencyAction> GetAllEmergencyActions()
+        {
+            return _emergencyActionRepository.GetAll();
+        }
+    }
+
 }

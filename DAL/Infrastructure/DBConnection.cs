@@ -13,7 +13,7 @@ namespace DAL.Infrastructure
         public static OdbcConnection getConnectionString()
         {
 
-            string conn = "DRIVER={MySQL ODBC 9.0 Unicode Driver}; SERVER=20.205.170.137; DATABASE=fireguard_dev; UID=shakibe;PASSWORD=#Fireguard2025; OPTION=3; port=3306; stmt=SET NAMES 'utf8';";
+            string conn = "DRIVER={MySQL ODBC 9.0 Unicode Driver}; SERVER=localhost; DATABASE=fireguard_dev; UID=root;PASSWORD=root; OPTION=3; port=3306; stmt=SET NAMES 'utf8';";
             OdbcConnection smsCosnnection = new OdbcConnection(conn);
             return smsCosnnection;
         }

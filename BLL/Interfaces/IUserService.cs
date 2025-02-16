@@ -20,4 +20,34 @@ namespace BLL.Interfaces
         //public List<User> SearchUser(string value);
 
     }
+
+    public interface IBuildingService
+    {
+        List<Building> GetAllBuildings();
+    }
+
+    public interface IFloorService
+    {
+        List<Floor> GetAllFloors();
+    }
+
+    public interface ICameraService
+    {
+        List<Camera> GetAllCameras();
+    }
+
+    public interface ISensorService
+    {
+        List<Sensor> GetAllSensors();
+    }
+
+    public interface IIncidentService
+    {
+        List<Incident> GetAllIncidents();
+    }
+
+    public interface IEmergencyActionService
+    {
+        List<EmergencyAction> GetAllEmergencyActions();
+    }
 }
