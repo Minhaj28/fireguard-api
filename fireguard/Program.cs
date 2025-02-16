@@ -1,10 +1,12 @@
 
+using BLL.Interfaces;
+using DAL.Interfaces;
+using DAL.ORM;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Register services with the dependency injection container using the new file
 builder.Services.AddApplicationServices();
-
-
 
 
 // Add services to the container.

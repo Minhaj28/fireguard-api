@@ -1,4 +1,5 @@
 ﻿using BLL.Interfaces;
+using BLL.Services;
 using DAL.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,6 +27,8 @@ namespace fireguard.Controllers
                 {
                     return NotFound("No users found."); // 404 Not Found
                 }
+
+
                 return Ok(users); // 200 OK with the list of users
             }
             catch (Exception ex)
@@ -212,5 +215,185 @@ namespace fireguard.Controllers
         //        return StatusCode(500, "Internal server error: " + ex.Message); // 500 Internal Server Error
         //    }
         //}
+    }
+
+    [Route("api/building")]
+    [ApiController]
+    public class BuildingController : ControllerBase
+    {
+        private readonly IBuildingService _buildingService;
+
+        public BuildingController(IBuildingService buildingService)
+        {
+            _buildingService = buildingService;
+        }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                List<Building> buildings = _buildingService.GetAllBuildings();
+                if (buildings == null || buildings.Count == 0)
+                {
+                    return NotFound("No buildings found.");
+                }
+                return Ok(buildings);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+    }
+
+    [Route("api/floor")]
+    [ApiController]
+    public class FloorController : ControllerBase
+    {
+        private readonly IFloorService _floorService;
+
+        public FloorController(IFloorService floorService)
+        {
+            _floorService = floorService;
+        }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                List<Floor> floors = _floorService.GetAllFloors();
+                if (floors == null || floors.Count == 0)
+                {
+                    return NotFound("No floors found.");
+                }
+                return Ok(floors);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+    }
+
+    [Route("api/camera")]
+    [ApiController]
+    public class CameraController : ControllerBase
+    {
+        private readonly ICameraService _cameraService;
+
+        public CameraController(ICameraService cameraService)
+        {
+            _cameraService = cameraService;
+        }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                List<Camera> cameras = _cameraService.GetAllCameras();
+                if (cameras == null || cameras.Count == 0)
+                {
+                    return NotFound("No cameras found.");
+                }
+                return Ok(cameras);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+    }
+
+    [Route("api/sensor")]
+    [ApiController]
+    public class SensorController : ControllerBase
+    {
+        private readonly ISensorService _sensorService;
+
+        public SensorController(ISensorService sensorService)
+        {
+            _sensorService = sensorService;
+        }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                List<Sensor> sensors = _sensorService.GetAllSensors();
+                if (sensors == null || sensors.Count == 0)
+                {
+                    return NotFound("No sensors found.");
+                }
+                return Ok(sensors);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+    }
+
+    [Route("api/incident")]
+    [ApiController]
+    public class IncidentController : ControllerBase
+    {
+        private readonly IIncidentService _incidentService;
+
+        public IncidentController(IIncidentService incidentService)
+        {
+            _incidentService = incidentService;
+        }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                List<Incident> incidents = _incidentService.GetAllIncidents();
+                if (incidents == null || incidents.Count == 0)
+                {
+                    return NotFound("No incidents found.");
+                }
+                return Ok(incidents);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+    }
+
+    [Route("api/emergency")]
+    [ApiController]
+    public class EmergencyActionController : ControllerBase
+    {
+        private readonly IEmergencyActionService _emergencyActionService;
+
+        public EmergencyActionController(IEmergencyActionService emergencyActionService)
+        {
+            _emergencyActionService = emergencyActionService;
+        }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                List<EmergencyAction> emergencyActions = _emergencyActionService.GetAllEmergencyActions();
+                if (emergencyActions == null || emergencyActions.Count == 0)
+                {
+                    return NotFound("No emergency actions found.");
+                }
+                return Ok(emergencyActions);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
     }
 }
